@@ -1,28 +1,29 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
+#include<quill/Backend.h>
+#include<quill/Frontend.h>
+#include<quill/LogMacros.h>
+#include<quill/Logger.h>
+#include<quill/sinks/ConsoleSink.h>
 
 #include  "framework/Game.h"
 //There are the 0.0.1 version of game -- everything in main function
 int main(){
-	/*
-	sf::RenderWindow window(sf::VideoMode(640, 480), "SFML Application");
-	sf::CircleShape shape;
-	shape.setRadius(40.f);
-	shape.setPosition(100.f, 100.f);
-	shape.setFillColor(sf::Color::Cyan);
-	while(window.isOpen()) {
-		sf::Event evt;
-		while (window.pollEvent(evt)) {
-			if (evt.type == sf::Event::Closed) {
-				window.close();
-			}
-		}
 
-		window.clear();
-		window.draw(shape);
-		window.display();
-	}
-	*/
+
+	quill::BackendOptions options;
+	options.enable_yield_when_idle = true;
+	options.transit_event_buffer_initial_capacity = 64;  // Reduce initial buffer size
+	options.transit_events_soft_limit = 2048;  // Lower soft limit
+	options.transit_events_hard_limit = 8192;  // Reduce max buffer size
+
+	quill::Backend::start(options);
+	auto console_sink = quill::Frontend::create_or_get_sink<quill::ConsoleSink>("sink_id_1");
+	quill::Logger* logger = quill::Frontend::create_or_get_logger("root", std::move(console_sink));
+	logger->set_log_level(quill::LogLevel::TraceL3);
+
+	LOG_INFO(logger, "Start Logging in Entry");
+
 	Game game;
 	game.run();
 

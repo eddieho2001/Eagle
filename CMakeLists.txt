@@ -35,7 +35,7 @@ set(EAGLE_GAME_EXE_NAME Eagle)
 # add sub projects
 # add_subdirectory(engine)
 add_subdirectory(game) 
-
+add_subdirectory(quill)
 
 
 

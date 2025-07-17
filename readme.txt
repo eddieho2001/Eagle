@@ -1,4 +1,4 @@
-Source Repos: https://github.com/TutLeeUdemy/LightYears
+Source Repos: https://github.com/eddieho2001/Eagle.git
 The most minimal game can be rough divide into three distinct areas:
 1 ) initialization 
 2 ) event processing - handle user input and update game logic with user input  
@@ -11,6 +11,21 @@ and finally rendering the results on screen.
 
 Frame/Tick - An iteration of the game loop is most often called a frame or a tick.
 Frames per second(FPS) - A measurement of how many loop iterations the game can do during a second
+
+Game Loop:
+			Application Start
+			       |
+			Game Setup(Initialization)
+				   |
+			Update Game(update game logic) -------------|
+			       |                                    |
+			Render Game state onto window(Rendering)    |
+				   |                                    |(Game Loop: each iteration is a frame/tick)
+			Process events(event processing)            |
+			       |                                    |
+			Is window still open? ----------------------|                       
+			       |
+			Application Shutdown
 
 
 Version 0.0.1:

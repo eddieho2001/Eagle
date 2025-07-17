@@ -1,5 +1,6 @@
 #pragma once
 #include<SFML/Graphics.hpp>
+#include<quill/Logger.h>
 
 class Game {
 public:
@@ -12,5 +13,6 @@ private:
 private:
 	sf::RenderWindow mWindow;
 	sf::CircleShape mPlayer;
+	quill::Logger* mlogger;
 
 };
