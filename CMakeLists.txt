@@ -14,6 +14,11 @@ message(STATUS "project level --> CMAKE_PROJECT_NAME     : ${CMAKE_PROJECT_NAME}
 message(STATUS "project level --> PROJECT_SOURCE_DIR     : ${PROJECT_SOURCE_DIR}")
 message(STATUS "project level --> PROJECT_BINARY_DIR     : ${PROJECT_BINARY_DIR}")
 
+message(STATUS "task hository --> 0.0.1 v ---> Fixed-frame rate method not work decribed in [SFML Game Developement By Example]")
+message(STATUS "task hository --> 0.0.2 v ---> split project as 1. engine library target 2. game executable target")
+
+
+
 # set all built output directory
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
@@ -29,11 +34,10 @@ FetchContent_Declare(
 	GIT_SHALLOW FALSE)
 FetchContent_MakeAvailable(${SFML_LIB_NAME})
 
-set(EAGLE_GAME_EXE_NAME Eagle)
-#set(LIGHTYEARS_ENGINE_TARGET_NAME engine)
-#set(LIGHTYEARS_GAME_TARGET_NAME game)
+set(EAGLE_ENGINE_TARGET_NAME engine)
+set(EAGLE_GAME_TARGET_NAME game)
 # add sub projects
-# add_subdirectory(engine)
+add_subdirectory(engine)
 add_subdirectory(game) 
 add_subdirectory(quill)
 
